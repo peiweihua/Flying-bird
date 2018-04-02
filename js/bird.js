@@ -53,6 +53,7 @@ $(function() {
 			if(bird.offset().top > 840 || bird.offset().top < 0) {
 				gameoverMusic.play();
 				console.log("小鸟掉下去了")
+				$('.wall').remove();
 				endPage.css({
 					"display": "block"
 				});
@@ -64,20 +65,38 @@ $(function() {
 			};
 			if($('.wall').index() > 0) {
 				if($('.wall').eq(0).offset().left < bird.offset().left + bird.width() && $('.wall').eq(0).offset().left > bird.offset().left) {
-					if(bird.offset().top > $('.wallTop').eq(0).height() || bird.offset().bottom > $('.wallBottom').eq(0).height()) {
+					if(bird.offset().top < $('.wallTop').eq(0).height()) {
+						gameoverMusic.play();
+						console.log("小鸟撞上墙了");
+						$('.wall').remove();
+						endPage.css({
+							"display": "block"
+						});
+						score = Math.floor(score);
+						endScore.text(score);
+						clearInterval(wallTimer);
+						clearInterval(birdTimer);
+						score = 0;
+
+					} else if(bird.offset().top > gamePage.height()-$('.wallBottom').eq(0).height()){
+						gameoverMusic.play();
+						console.log("小鸟撞下墙了");
+						$('.wall').remove();
+						endPage.css({
+							"display": "block"
+						});
+						score = Math.floor(score);
+						endScore.text(score);
+						clearInterval(wallTimer);
+						clearInterval(birdTimer);
+						score = 0;
+
+					} else {
 						passMusic.play();
 						console.log("过去一个")
 						score += 0.25;
 						mainScore.text(Math.floor(score));
 
-					} else {
-						gameoverMusic.play();
-						console.log("小鸟撞墙了");
-						endScore = score;
-						endScore.text(Math.floor(endScore));
-						clearInterval(wallTimer);
-						clearInterval(birdTimer);
-						score = 0;
 					}
 				}
 			}
@@ -87,8 +106,8 @@ $(function() {
 	}
 
 	function createWall() {
-		var wallTopHeight = Math.floor(Math.random() * (startPage.height() - 300));
-		var wallBottomHeight = (startPage.height() - 300) - wallTopHeight;
+		var wallTopHeight = Math.floor(Math.random() * (startPage.height() - 350));
+		var wallBottomHeight = (startPage.height() - 350) - wallTopHeight;
 		var wallTop = document.createElement('div');
 		var wallBottom = document.createElement("div");
 		$(wallTop).addClass('wall wallTop');
