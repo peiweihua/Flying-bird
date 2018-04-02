@@ -1,0 +1,98 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+html,
+body {
+	width: 100%;
+	height: 970px;
+	overflow: hidden;
+	background-image: url(../img/bg.jpg);
+	background-size: 100% 100%;
+	/*background-color: greenyellow;*/
+}
+
+.startPage {
+	position: absolute;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+
+/*.startPage .startScore {
+	padding-top: 20px;
+	font-size: 50px;
+	color: white;
+	font-weight: bolder;
+}*/
+
+.startPage .startBtn {
+	margin-top: 20%;
+	font-size: 40px;
+	color: #FF8C69;
+	font-weight: bolder;
+}
+
+.gamePage {
+	width: 75%;
+	height: 100%;
+	margin: 0 auto;
+	position: relative;
+	text-align: center;
+}
+
+.gamePage .bird {
+	position: absolute;
+	width: 180px;
+	height: 150px;
+	top: 200px;
+	left: 200px;
+	background-image: url(../img/bird.gif);
+	background-size: 100% 120%;
+	transform: rotateY(180deg);
+	transform-origin: center;
+}
+
+.gamePage .mainScore {
+	padding-top: 20px;
+	font-size: 50px;
+	color: white;
+	font-weight: bolder;
+}
+
+.endPage {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: url(../img/bg.jpg);
+	background-size: 100%;
+	height: 100%;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	text-align: center;
+}
+
+.endPage .endScoreTitle {
+	display: block;
+	margin-top: 10%;
+	font-size: 50px;
+}
+
+.endPage .endScore {
+	margin-top: 50px;
+	font-size: 50px;
+	color: white;
+	font-weight: bolder;
+}
+
+.endPage .regame {
+	margin-top: 50px;
+	font-size: 50px;
+	color: #FF8C69;
+	font-weight: bolder;
+}
